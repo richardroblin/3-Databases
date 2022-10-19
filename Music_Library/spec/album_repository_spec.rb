@@ -12,27 +12,45 @@ RSpec.describe AlbumRepository do
     before(:each) do 
       reset_albums_table
     end
-  
-    it 'returns all albums' do
-        repo = AlbumRepository.new
-        albums = repo.all
-        expect(albums.length).to eq 2
+
+    context 'can retrieve all albums' do
+
+        it 'returns all albums' do
+            repo = AlbumRepository.new
+            albums = repo.all
+            expect(albums.length).to eq 2
+        end
+
+        it 'returns first album details' do
+            repo = AlbumRepository.new
+            albums = repo.all
+            expect(albums.first.title).to eq 'Doolittle'
+            expect(albums.first.release_year).to eq '1989'
+            expect(albums.first.artist_id).to eq '1'
+        end
+
+        it 'returs second album details' do
+            repo = AlbumRepository.new
+            albums = repo.all
+            expect(albums[1].title).to eq  'Surfer Rosa'
+            expect(albums[1].release_year).to eq '1988'
+            expect(albums[1].artist_id).to eq '1'
+        end
+
     end
 
-    it 'returns first album details' do
-        repo = AlbumRepository.new
-        albums = repo.all
-        expect(albums.first.title).to eq 'Doolittle'
-        expect(albums.first.release_year).to eq '1989'
-        expect(albums.first.artist_id).to eq '1'
+    context 'can find an album' do
+
+        it 'finds a single album' do
+            repo = AlbumRepository.new
+            album = repo.find(1)
+            expect(album.id).to eq '1'
+            expect(album.title).to eq 'Doolittle'
+            expect(album.release_year).to eq '1989'
+            expect(album.artist_id).to eq '1'
+        end
+
     end
 
-    it 'returs second album details' do
-        repo = AlbumRepository.new
-        albums = repo.all
-        expect(albums[1].title).to eq  'Surfer Rosa'
-        expect(albums[1].release_year).to eq '1988'
-        expect(albums[1].artist_id).to eq '1'
-    end
 
 end

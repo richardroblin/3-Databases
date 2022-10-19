@@ -22,10 +22,17 @@ album_repository = AlbumRepository.new
 # end
 
 # ABOVE REPLACED BY
-artist_repository.all.each do |record|
-  p record
-end
+# artist_repository.all.each do |record|
+#   p record
+# end
 
-album_repository.all.each do |record|
-  p record
-end
+# album_repository.all.each do |record|
+#   p record
+# end
+
+#find album with ID = 3
+find_album = album_repository.find(3)
+
+p "Album found is: " + find_album.id + ' ' + find_album.title
+
+p album_repository.all
