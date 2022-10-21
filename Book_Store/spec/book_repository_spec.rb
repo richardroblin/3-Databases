@@ -4,13 +4,13 @@ def reset_books_table
     seed_sql = File.read('spec/seeds_books.sql')
     connection = PG.connect({ host: '127.0.0.1', dbname: 'book_store_test' })
     connection.exec(seed_sql)
-  end
+end
 
 RSpec.describe BookRepository do
 
     before(:each) do 
         reset_books_table
-      end
+    end
 
     it 'returns 2 books' do
 
@@ -20,7 +20,7 @@ RSpec.describe BookRepository do
         expect(books.length).to eq 2
     end
 
-     it 'returns the first book correctly' do
+    it 'returns the first book correctly' do
         repo = BookRepository.new
         books = repo.all
         expect(books[0].id).to eq "1"

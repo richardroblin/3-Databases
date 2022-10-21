@@ -40,4 +40,21 @@ class AlbumRepository
 
     end
 
+
+    def create(album)
+      sql = "INSERT INTO albums (title, release_year, artist_id) VALUES ($1, $2, $3);"
+        
+      DatabaseConnection.exec_params(sql, [album.title, album.release_year, album.artist_id])
+
+      return nil
+
+    end
+
+    def delete(id)
+      sql = "DELETE FROM albums WHERE ID = $1"
+      DatabaseConnection.exec_params(sql,[id])
+
+      return nil
+    end
+
 end

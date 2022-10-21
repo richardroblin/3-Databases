@@ -52,5 +52,29 @@ RSpec.describe AlbumRepository do
 
     end
 
+    context 'can add a new album' do
+
+        it 'inserts a single album' do
+            repo = AlbumRepository.new
+            album = Album.new
+            album.title = 'Trompe le Monde'
+            album.release_year = 1991
+            album.artist_id = 1
+            repo.create(album)
+            all_albums = repo.all
+            expect(all_albums.length).to eq 3
+        end
+ 
+    end
+
+    context 'can delete an album' do
+
+        it 'deletes a single album' do
+            repo = AlbumRepository.new
+            album = repo.delete(1)
+            expect(repo.all.length).to eq 1
+        end
+    end
+
 
 end
