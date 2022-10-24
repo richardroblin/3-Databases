@@ -184,6 +184,7 @@ account.id # =>  1
 account.email # =>  'hello@world.com'
 account.username # =>  'helloworld'
 
+# 3
 # Add more examples for each method
 ```
 
